@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/mock-store-front/static/css/main.a617e044.chunk.css",
+    "main.js": "/mock-store-front/static/js/main.0bd22d73.chunk.js",
+    "main.js.map": "/mock-store-front/static/js/main.0bd22d73.chunk.js.map",
+    "runtime-main.js": "/mock-store-front/static/js/runtime-main.68156560.js",
+    "runtime-main.js.map": "/mock-store-front/static/js/runtime-main.68156560.js.map",
+    "static/js/2.328e0806.chunk.js": "/mock-store-front/static/js/2.328e0806.chunk.js",
+    "static/js/2.328e0806.chunk.js.map": "/mock-store-front/static/js/2.328e0806.chunk.js.map",
+    "static/js/3.de3e006b.chunk.js": "/mock-store-front/static/js/3.de3e006b.chunk.js",
+    "static/js/3.de3e006b.chunk.js.map": "/mock-store-front/static/js/3.de3e006b.chunk.js.map",
+    "index.html": "/mock-store-front/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/mock-store-front/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.328e0806.chunk.js.LICENSE.txt": "/mock-store-front/static/js/2.328e0806.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/mock-store-front/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68156560.js",
+    "static/js/2.328e0806.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.0bd22d73.chunk.js"
+  ]
+}
