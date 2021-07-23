@@ -1,4 +1,4 @@
-import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircleRounded';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -26,9 +26,13 @@ const Header = () => {
         <Button color="inherit">Latest</Button>
         <Button color="inherit">Products</Button>
         <Button color="inherit">About Us</Button>
-        <ShoppingCartIcon className={classes.icon} />
-        <AccountCircleIcon className={classes.icon} />
-
+        <Box m={1}/>
+        <IconButton color='secondary'>
+          <ShoppingCartIcon />
+        </IconButton>
+        <IconButton color='secondary'>
+          <AccountCircleIcon />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

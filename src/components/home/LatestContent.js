@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     justifyContent: 'right'
   },
+  latestTitle: {
+    fontWeight: 600
+  }
 }));
 
 const Item = (props) => {
@@ -42,7 +45,7 @@ const Item = (props) => {
         title={props.item.title}
       />
       <CardContent className={classes.cardContent}>
-        <Typography gutterBottom variant="h6" component="h2">
+        <Typography className={classes.latestTitle} gutterBottom variant="body1" component="h2">
           {props.item.title}
         </Typography>
         <Typography variant="body2">
@@ -66,7 +69,7 @@ const LatestContent = () => {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      <Typography component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
+      <Typography className={classes.latestTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
         Latest Products
       </Typography>
       <Grid container spacing={4}>

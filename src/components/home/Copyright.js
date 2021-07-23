@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#3d3d3d",
   },
   copyrightType: {
-    color: "#fffffe"
+    color: "#fffffe",
   }
 }));
 
@@ -19,9 +19,9 @@ const Copyright = () => {
   return (
     <div className={classes.copyright}>
       <Container maxWidth='md'>
-        <Grid container alignItems='center' spacing={0}>
+        <Grid container direction="row" justifyContent="space-between" alignItems="center">
           <Grid item md={8}>
-            <Typography className={classes.copyrightType} variant="body2" color="textSecondary" >
+            <Typography className={classes.copyrightType} variant="body2" color="textSecondary">
               {'Copyright © '}
               <Link color="inherit" href="https://material-ui.com/">
                 CoffeeStore
@@ -30,16 +30,18 @@ const Copyright = () => {
               {'.'}
             </Typography>
           </Grid>
-          <Grid item container md={4} justifyContent='flex-end'>
-            <Grid item>
-              <IconButton>
-                <MailIcon className={classes.copyrightType}/>
-              </IconButton>
-            </Grid>
-            <Grid item>
-              <IconButton>
-                <TwitterIcon className={classes.copyrightType}/>
-              </IconButton>
+          <Grid item md={4}>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <IconButton>
+                  <MailIcon className={classes.copyrightType}/>
+                </IconButton>
+              </Grid>
+              <Grid item>
+                <IconButton>
+                  <TwitterIcon className={classes.copyrightType}/>
+                </IconButton>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

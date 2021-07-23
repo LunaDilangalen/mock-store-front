@@ -1,11 +1,10 @@
-import { Button, Container, CssBaseline, Paper, Typography } from '@material-ui/core';
+import { Button, Container, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 
 import {
   FiCard,
-  FiCardActionArea,
   FiCardActions,
   FiCardContent,
   FiCardMedia
@@ -40,11 +39,27 @@ const useStyles = makeStyles((theme) => ({
   fiCardContentTextSecondary: {
     color: "rgba(255,255,255,0.78)"
   },
+  featuredTitle: {
+    fontWeight: 600
+  }
 }));
 
 function FeaturedProducts(props) {
   return (
-    <Carousel>
+    <Carousel 
+      navButtonsAlwaysVisible
+      navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+        style: {
+          opacity: 0.4,
+        }
+      }}
+      indicatorIconButtonProps={{
+        style: {
+          padding: '2px',
+        }
+      }}
+      animation="slide"
+    >
       {
         products.map((item, i) => <Item key={i} item={item} />)
       }
@@ -60,11 +75,15 @@ function Item(props) {
       <FiCard className={classes.card}>
         <FiCardMedia
           media="picture"
-          alt="Contemplative Reptile"
           image={props.item.imgSrc}
           title={props.item.title}
         />
         <FiCardContent className={classes.fiCardContent}>
+          <Typography className={classes.featuredTitle} gutterBottom variant="h5" component="h2">
+            {/* <Box fontWeight="fontWeightBold" m={1}> */}
+             Featured Product
+            {/* </Box> */}
+          </Typography>
           <Typography gutterBottom variant="h3" component="h2">
             {props.item.title}
           </Typography>
