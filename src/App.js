@@ -6,6 +6,7 @@ import Copyright from './components/home/Copyright';
 import { CssBaseline } from '@material-ui/core';
 import Cart from './components/cart/Cart';
 import { makeStyles } from '@material-ui/core/styles';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,8 +30,11 @@ function App() {
       <div className={classes.root}>
         <CssBaseline />
         <Header />
-        {/* <Home /> */}
-        <Cart />
+          <Switch>
+          console.log(props.history)
+            <Route exact path="/mock-store-front/" component={Home}/>
+            <Route exact path="/mock-store-front/cart" component={Cart}/>
+          </Switch>
         <footer className={classes.footer}>
           <Copyright />
         </footer>

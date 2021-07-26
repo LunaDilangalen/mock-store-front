@@ -61,13 +61,13 @@ export default function Cart() {
         Cart Items ({randomNumber})
       </Typography>
       <Grid container>
-        <Grid item md={8}>
+        <Grid item md={8} sm={12} xs={12}>
           {/* <Paper elevation={4}> */}
           <Container className={classes.cartItemsContainer}>
             <Grid container spacing={2}>
               {/* Cart Items Layout */}
               {cartItems.map((cartItem, i) => (
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} xs={12}>
                   <CartItem className={classes.cartItemCard} key={i} item={cartItems} />
                 </Grid>
               ))}
@@ -75,7 +75,7 @@ export default function Cart() {
           </Container>
           {/* </Paper> */}
         </Grid>
-        <Grid item md={4}>
+        <Grid item md={4} sm={12} xs={12}>
           {/* <Paper elevation={3}> */}
             <Container className={classes.cartSummaryContainer}>
               <Typography variant="h6">
@@ -132,7 +132,6 @@ export default function Cart() {
           {/* </Paper> */}
         </Grid>
       </Grid>
-      
     </Container>
   );
 }
