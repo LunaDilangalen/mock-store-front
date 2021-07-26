@@ -40,16 +40,12 @@ const Header = (props) => {
       pageURL: "/mock-store-front/"
     },
     {
-      menuTitle: "Latest",
-      pageURL: "/mock-store-front/"
-    },
-    {
-      menuTitle: "Products",
-      pageURL: "/mock-store-front/"
+      menuTitle: "Shop",
+      pageURL: "/mock-store-front/shop"
     },
     {
       menuTitle: "About",
-      pageURL: "/mock-store-front/"
+      pageURL: "/mock-store-front/about"
     },
     {
       menuTitle: "My Cart",
@@ -57,7 +53,7 @@ const Header = (props) => {
     },
     {
       menuTitle: "My Account",
-      pageURL: "/mock-store-front/"
+      pageURL: "/mock-store-front/account"
     },
   ];
 
@@ -109,14 +105,13 @@ const Header = (props) => {
           ) : (
             <React.Fragment>
               <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/')}>Home</Button>
-              <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/')}>Latest</Button>
-              <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/')}>Products</Button>
-              <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/')}>About Us</Button>
+              <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/shop')}>Shop</Button>
+              <Button color="inherit" onClick={() => handleButtonClick('/mock-store-front/about')}>About Us</Button>
               <Box m={1}/>
               <IconButton color='inherit' onClick={() => handleButtonClick('/mock-store-front/cart')}>
                 <ShoppingCartIcon />
               </IconButton>
-              <IconButton color='inherit' onClick={() => handleButtonClick('/mock-store-front/')}>
+              <IconButton color='inherit' onClick={() => handleButtonClick('/mock-store-front/account')}>
                 <AccountCircleIcon />
               </IconButton>
             </React.Fragment>

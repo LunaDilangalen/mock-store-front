@@ -71,7 +71,7 @@ function Item(props) {
   const classes = useStyles();
 
   return (
-    <Paper variant="outlined">
+    <Paper>
       <FiCard className={classes.card}>
         <FiCardMedia
           media="picture"

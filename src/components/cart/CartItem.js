@@ -66,7 +66,7 @@ const CartItem = () => {
       <CardMedia
         className={classes.cover}
         image="https://source.unsplash.com/random"
-        title="Live from space album cover"
+        title="Product Image Title"
       />
       <div className={classes.details}>
         <CardContent className={classes.content}>
@@ -78,12 +78,12 @@ const CartItem = () => {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          <Button size="small" aria-label="previous">
+          {/* <Button size="small" aria-label="previous">
             <FavoriteBorderIcon fontSize="small" />
             <Typography className={classes.cardActionTypography} variant="caption">
               Add to wishlist
             </Typography>
-          </Button>
+          </Button> */}
           <Button size="small" aria-label="next">
             <DeleteIcon fontSize="small"/>
             <Typography className={classes.cardActionTypography} variant="caption">

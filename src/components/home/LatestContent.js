@@ -38,7 +38,7 @@ const Item = (props) => {
   const classes = useStyles();
   
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} elevation={1}>
       <CardMedia
         className={classes.cardMedia}
         image={props.item.imgSrc}
