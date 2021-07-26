@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const cartItems = [1, 2, 3, 4, 5]
+const cartItems = [1, 2, 3, 4]
 
 export default function Cart() {
   const classes = useStyles();
