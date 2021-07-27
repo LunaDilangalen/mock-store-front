@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, IconButton, Typography } from '@material-ui/core';
+import { Button, Container, Grid, IconButton, Typography } from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
@@ -10,6 +10,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
 import products from '../../mock_data/constants';
+
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -31,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
   },
   latestTitle: {
     fontWeight: 600
+  },
+  seeShopButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingTop: theme.spacing(4),
   }
 }));
 
@@ -64,8 +71,12 @@ const Item = (props) => {
   );
 }
 
-const LatestContent = () => {
+const LatestContent = (props) => {
   const classes = useStyles();
+
+  const handleButtonClick = (pageURL) => {
+    props.history.push(pageURL);
+  }
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
@@ -79,8 +90,13 @@ const LatestContent = () => {
           </Grid>
         ))}
       </Grid>
+      <Container className={classes.seeShopButtonContainer}>
+        <Button size="small" color="inherit" variant="outlined" onClick={() => handleButtonClick('/mock-store-front/shop')}>
+          See all products
+        </Button>
+      </Container>
     </Container>
   );
 }
 
-export default LatestContent;
+export default withRouter(LatestContent);

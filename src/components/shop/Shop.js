@@ -1,31 +1,95 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { Container, Grid, IconButton, Typography } from '@material-ui/core';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import products from '../../mock_data/constants';
+import { Pagination } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
-    paddingBottom: theme.spacing(10),
-    direction: "column"
+  cardGrid: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
   },
-  shopSectionTitle: {
-    fontWeight: 600,
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
+  cardMedia: {
+    // paddingTop: '56.25%', // 16:9
+    paddingTop: '60%'
+  },
+  cardContent: {
+    flexGrow: 1,
+    justifyContent: 'right'
+  },
+  shopTitle: {
+    fontWeight: 600
+  },
+  paginationControls: {
+    display: 'flex',
+    justifyContent: 'center',
+    paddingTop: theme.spacing(2),
+  }
 }));
+
+const Item = (props) => {
+  const classes = useStyles();
+  
+  return (
+    <Card className={classes.card} elevation={1}>
+      <CardMedia
+        className={classes.cardMedia}
+        image={props.item.imgSrc}
+        title={props.item.title}
+      />
+      <CardContent className={classes.cardContent}>
+        <Typography className={classes.shopTitle} gutterBottom variant="body1" component="h2">
+          {props.item.title}
+        </Typography>
+        <Typography variant="body2">
+          {props.item.price}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <IconButton size="small">
+          <FavoriteBorderIcon size="small" />
+        </IconButton>
+        <IconButton size="small">
+          <AddShoppingCartIcon size="small" />
+      </IconButton>
+      </CardActions>
+    </Card>
+  );
+}
 
 const Shop = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" className={classes.content} maxWidth="md">
-      <Typography className={classes.shopSectionTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
+    <Container className={classes.cardGrid} maxWidth="md">
+      <Typography className={classes.shopTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
         Shop
       </Typography>
+      <Grid container spacing={4}>
+        {products.map((item, i) => (
+          <Grid item key={i} xs={12} sm={6} md={4}>
+            <Item key={i} item={item}/>
+          </Grid>
+        ))}
+      </Grid>
+      <div className={classes.paginationControls}>
+        <Pagination count={10} />
+      </div>
     </Container>
   );
-  
 }
 
 export default Shop;
