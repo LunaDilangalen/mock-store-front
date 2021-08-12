@@ -1,11 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Container, Grid, IconButton, Typography } from '@material-ui/core';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { Button, Container, Grid, Typography } from '@material-ui/core';
 
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 
@@ -22,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: theme.palette.background.default,
   },
   cardMedia: {
     // paddingTop: '56.25%', // 16:9
@@ -45,28 +43,20 @@ const Item = (props) => {
   const classes = useStyles();
   
   return (
-    <Card className={classes.card} elevation={1}>
+    <Card className={classes.card} elevation={0}>
       <CardMedia
         className={classes.cardMedia}
         image={props.item.imgSrc}
         title={props.item.title}
       />
       <CardContent className={classes.cardContent}>
-        <Typography className={classes.latestTitle} gutterBottom variant="body1" component="h2">
+        <Typography gutterBottom variant="body1" component="h2">
           {props.item.title}
         </Typography>
-        <Typography variant="body2">
+        <Typography className={classes.latestTitle} variant="body2">
           {props.item.price}
         </Typography>
       </CardContent>
-      <CardActions>
-        <IconButton size="small">
-          <FavoriteBorderIcon size="small" />
-        </IconButton>
-        <IconButton size="small">
-          <AddShoppingCartIcon size="small" />
-      </IconButton>
-      </CardActions>
     </Card>
   );
 }
@@ -81,7 +71,7 @@ const LatestContent = (props) => {
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <Typography className={classes.latestTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
-        Latest Products
+        Pre-orders
       </Typography>
       <Grid container spacing={4}>
         {products.map((item, i) => (
@@ -91,7 +81,7 @@ const LatestContent = (props) => {
         ))}
       </Grid>
       <Container className={classes.seeShopButtonContainer}>
-        <Button size="small" color="inherit" variant="outlined" onClick={() => handleButtonClick('/mock-store-front/shop')}>
+        <Button size="small" color="inherit" variant="outlined" onClick={() => handleButtonClick('/shop')}>
           See all products
         </Button>
       </Container>

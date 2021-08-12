@@ -3,13 +3,15 @@ import React from 'react';
 import Home from './components/home/Home';
 import Account from './components/account/Account';
 import Header from './components/header/Header';
-import Copyright from './components/home/Copyright';
+import Copyright from './components/copyright/Copyright';
 import { CssBaseline } from '@material-ui/core';
 import Cart from './components/cart/Cart';
 import { makeStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
-import Shop from './components/shop/Shop';
-import AboutExtended from './components/about/AboutExtended';
+import { Route, Switch } from 'react-router-dom';
+
+// import { withAuthenticator } from '@aws-amplify/ui-react';
+
+const config = require('./config.json');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  const rootUrl = config['root-url'];
 
   return (
     <React.Fragment>
@@ -35,11 +38,9 @@ function App() {
         <Header />
           <Switch>
           console.log(props.history)
-            <Route exact path="/mock-store-front/" component={Home}/>
-            <Route exact path="/mock-store-front/cart" component={Cart}/>
-            <Route exact path="/mock-store-front/account" component={Account}/>
-            <Route exact path="/mock-store-front/shop" component={Shop}/>
-            <Route exact path="/mock-store-front/about" component={AboutExtended}/>
+            <Route exact path={rootUrl + "/"} component={Home}/>
+            <Route exact path={rootUrl + "/cart"} component={Cart}/>
+            <Route exact path={rootUrl + "/account"} component={Account}/>
           </Switch>
         <footer className={classes.footer}>
           <Copyright />
@@ -50,4 +51,5 @@ function App() {
   );
 }
 
+// export default withAuthenticator(App);
 export default App;

@@ -1,20 +1,14 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import { Badge, Button, ButtonGroup, TextField, Grid } from "@material-ui/core";
+import { Button, ButtonGroup, TextField} from "@material-ui/core";
 
 // material icons
 import DeleteIcon from '@material-ui/icons/Delete';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import RemoveIcon from '@material-ui/icons/Remove';
-import MailIcon from '@material-ui/icons/Mail';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
@@ -78,12 +72,6 @@ const CartItem = () => {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          {/* <Button size="small" aria-label="previous">
-            <FavoriteBorderIcon fontSize="small" />
-            <Typography className={classes.cardActionTypography} variant="caption">
-              Add to wishlist
-            </Typography>
-          </Button> */}
           <Button size="small" aria-label="next">
             <DeleteIcon fontSize="small"/>
             <Typography className={classes.cardActionTypography} variant="caption">

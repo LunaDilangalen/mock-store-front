@@ -7,6 +7,10 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+// import Amplify from 'aws-amplify';
+// import config from './aws-exports';
+// Amplify.configure(config);
+
 ReactDOM.render(
   <React.StrictMode>
     <Router basename="/">

@@ -18,7 +18,7 @@ const Copyright = () => {
 
   return (
     <div className={classes.copyright}>
-      <Container maxWidth='md'>
+      <Container maxWidth='lg'>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
           <Grid item md={8}>
             <Typography className={classes.copyrightType} variant="body2" color="textSecondary">

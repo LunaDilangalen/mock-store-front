@@ -14,7 +14,7 @@ const About = () => {
 
   return (
     <div className={classes.about}>
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Typography variant="h6" align="center" gutterBottom>
           About CoffeeStore
         </Typography>
