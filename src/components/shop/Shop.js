@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Box, Container, Grid, Tab, Tabs, Typography } from '@material-ui/core';
+import { Box, CardActionArea, Container, Grid, Modal, Tab, Tabs, Typography } from '@material-ui/core';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,6 +11,20 @@ import products from '../../mock_data/constants';
 
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
+import Cart from '../cart/Cart';
+import Product from '../product/Product';
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  return {
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+  };
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,26 +58,67 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     paddingTop: theme.spacing(2),
   },
+  modalPaper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: 1080,
+    minHeigh: 500,
+    backgroundColor: theme.palette.background.paper,
+    // border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 const Item = (props) => {
   const classes = useStyles();
 
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const body = (item) => {
+    return (
+      <div style={modalStyle} className={classes.modalPaper}>
+        <Product item={item} />
+      </div>
+    );
+  }
+
   return (
     <Card className={classes.card} elevation={0}>
-      <CardMedia
-        className={classes.cardMedia}
-        image={props.item.imgSrc}
-        title={props.item.title}
-      />
-      <CardContent className={classes.cardContent}>
-        <Typography gutterBottom variant="body1" component="h2">
-          {props.item.title}
-        </Typography>
-        <Typography className={classes.shopTitle} variant="body2">
-          {props.item.price}
-        </Typography>
-      </CardContent>
+      <CardActionArea onClick={handleOpen}>
+        <CardMedia
+          className={classes.cardMedia}
+          image={props.item.imgSrc}
+          title={props.item.title}
+        />
+        <CardContent className={classes.cardContent}>
+          <Typography gutterBottom variant="body1" component="h2">
+            {props.item.title}
+          </Typography>
+          <Typography className={classes.shopTitle} variant="body2">
+            {props.item.price}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body(props.item)}
+      </Modal>
     </Card>
   );
 }
@@ -123,45 +178,45 @@ const Shop = () => {
 
   return (
     <div id="shop">
-    <Container className={classes.cardGrid} maxWidth="lg">
-      <Typography className={classes.shopTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
-        Shop
-      </Typography>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        indicatorColor="primary"
-        textColor="primary"
-        aria-label="full width tabs example"
-      >
-        <Tab label="Pre-orders" {...a11yProps(0)} />
-        <Tab label="On-hands" {...a11yProps(1)} />
-      </Tabs>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <Grid container spacing={4}>
-            {products.map((item, i) => (
-              <Grid item key={i} xs={6} sm={6} md={4}>
-                <Item key={i} item={item} />
-              </Grid>
-            ))}
-          </Grid>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <Grid container spacing={4}>
-            {products.map((item, i) => (
-              <Grid item key={i} xs={6} sm={6} md={4}>
-                <Item key={i} item={item} />
-              </Grid>
-            ))}
-          </Grid>
-        </TabPanel>
-      </SwipeableViews>
-    </Container>
+      <Container className={classes.cardGrid} maxWidth="lg">
+        <Typography className={classes.shopTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
+          Shop
+        </Typography>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          aria-label="full width tabs example"
+        >
+          <Tab label="Pre-orders" {...a11yProps(0)} />
+          <Tab label="On-hands" {...a11yProps(1)} />
+        </Tabs>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <Grid container spacing={4}>
+              {products.map((item, i) => (
+                <Grid item key={i} xs={6} sm={6} md={4}>
+                  <Item key={i} item={item} />
+                </Grid>
+              ))}
+            </Grid>
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction}>
+            <Grid container spacing={4}>
+              {products.map((item, i) => (
+                <Grid item key={i} xs={6} sm={6} md={4}>
+                  <Item key={i} item={item} />
+                </Grid>
+              ))}
+            </Grid>
+          </TabPanel>
+        </SwipeableViews>
+      </Container>
     </div>
   );
 }
