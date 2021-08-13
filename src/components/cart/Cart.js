@@ -51,7 +51,7 @@ export default function Cart() {
   const randomNumber = cartItems.length;
 
   return (
-    <Container component="main" className={classes.content} maxWidth="md">
+    <Container component="main" className={classes.content} maxWidth="lg">
       {/* <Typography variant="h2" component="h1" gutterBottom> */}
       <Typography className={classes.cartSectionTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
         My Cart

@@ -20,7 +20,7 @@ const Account = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" className={classes.content} maxWidth="md">
+    <Container component="main" className={classes.content} maxWidth="lg">
       <Typography className={classes.accountSectionTitle} component="h1" variant="h2" align="left" color="textPrimary" gutterBottom>
         My Account
       </Typography>
