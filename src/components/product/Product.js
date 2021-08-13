@@ -27,8 +27,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left',
     direction: "row"
   },
-  detailsElement: {
-    paddingTop: theme.spacing(2),
+  detailsNameAndPrice: {
+    paddingLeft: theme.spacing(0),
+  },
+  detailsQuantity: {
+    paddingTop: theme.spacing(4),
+    paddingLeft: theme.spacing(0),
+  },
+  detailsAddToCart: {
+    paddingTop: theme.spacing(4),
     paddingLeft: theme.spacing(0),
   },
   quantityField: {
@@ -62,46 +69,49 @@ const Product = (props) => {
         <Grid item md={4}>
           <Paper elevation={0}>
             <Container className={classes.detailsContainer}>
-              <Typography variant="subtitle1" align="left" color="textPrimary" gutterBottom>
-                {props.item.title}
-              </Typography>
-              <Typography variant="subtitle1" align="left" color="textPrimary" gutterBottom>
-                {props.item.price}
-              </Typography>
-              <ButtonGroup size="small">
-                <Button
-                  aria-label="reduce"
-                  onClick={() => {
-                    setCount(Math.max(count - 1, 0));
-                  }}
-                >
-                  <RemoveIcon fontSize="small" />
-                </Button>
-                <TextField
-                  inputProps={{ min: 0, style: { textAlign: 'center' } }}
-                  className={classes.quantityField}
-                  size="small" id="outlined-basic"
-                  placeholder={0}
-                  value={count}
-                  variant="outlined"
-                  disabled
+              <Container className={classes.detailsNameAndPrice}>
+                <Typography variant="subtitle1" align="left" color="textPrimary" gutterBottom>
+                  {props.item.title}
+                </Typography>
+                <Typography variant="h6" align="left" color="textPrimary" gutterBottom>
+                  {props.item.price}
+                </Typography>
+              </Container>
+              <Container className={classes.detailsQuantity}>
+                <ButtonGroup size="small">
+                  <Button
+                    aria-label="reduce"
+                    onClick={() => {
+                      setCount(Math.max(count - 1, 0));
+                    }}
+                  >
+                    <RemoveIcon fontSize="small" />
+                  </Button>
+                  <TextField
+                    inputProps={{ min: 0, style: { textAlign: 'center' } }}
+                    className={classes.quantityField}
+                    size="small" id="outlined-basic"
+                    placeholder={0}
+                    value={count}
+                    variant="outlined"
+                    disabled
 
-                />
-                <Button
-                  aria-label="increase"
-                  onClick={() => {
-                    setCount(count + 1);
-                  }}
-                >
-                  <AddIcon fontSize="small" />
-                </Button>
-              </ButtonGroup>
-              <Container className={classes.detailsElement}>
+                  />
+                  <Button
+                    aria-label="increase"
+                    onClick={() => {
+                      setCount(count + 1);
+                    }}
+                  >
+                    <AddIcon fontSize="small" />
+                  </Button>
+                </ButtonGroup>
+              </Container>
+              <Container className={classes.detailsAddToCart}>
                 <Button variant="contained" color="primary">
                   Add to Cart
                 </Button>
               </Container>
-
             </Container>
           </Paper>
         </Grid>
